@@ -15,8 +15,11 @@ bs58.decode(priv_key)
 const wallet = new Wallet(keypair);
 
 const CreateTRG = async() => {
-    // get the latest manifest
     const manifest = await dexterity.getManifest(rpc, false, wallet);
+     
+    const MPG = "DDxNzq3A4qKJxnK2PFYeXE1SgGXCR5baaDBhpfLn3LRS" // BTC-USD Market-Product-Group PubKey for Testnet
+    const mpgPubkey = new PublicKey(MPG);
+    const trgPubkey = await manifest.createTrg(mpgPubkey);
+    console.log("success! trg pubkey:", trgPubkey);
 }
 CreateTRG()
-    

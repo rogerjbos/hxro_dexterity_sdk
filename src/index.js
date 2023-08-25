@@ -23,8 +23,22 @@ const rpc = (0, web3_js_1.clusterApiUrl)(CLUSTER_NAME);
 const priv_key = "3SZgvGVoGfWL1B3Re1fFRepr4mjVdNkNfsjUCQ9byg8rgkMTwsP1fCe19JXAFb3dSfxtvmqMUvqDSV2DXkdswWK2";
 const keypair = web3_js_1.Keypair.fromSecretKey(bs58_1.default.decode(priv_key));
 const wallet = new anchor_1.Wallet(keypair);
+// const CreateTRG = async() => {
+//     // get the latest manifest
+//     const manifest = await dexterity.getManifest(rpc, false, wallet);
+// }
+// CreateTRG()
+// // BTC-USD Market-Product-Group PubKey
+// const MPG = "DDxNzq3A4qKJxnK2PFYeXE1SgGXCR5baaDBhpfLn3LRS"
+// const mpgPubkey = new PublicKey(MPG);
+// //Create our TRG for the BTC-USD MPG
+// const trgPubkey = await manifest.createTrg(mpgPubkey);
+// console.log("success! trg pubkey:", trgPubkey.toBase58());
 const CreateTRG = () => __awaiter(void 0, void 0, void 0, function* () {
-    // get the latest manifest
     const manifest = yield dexterity.getManifest(rpc, false, wallet);
+    const MPG = "DDxNzq3A4qKJxnK2PFYeXE1SgGXCR5baaDBhpfLn3LRS"; // BTC-USD Market-Product-Group PubKey for Testnet
+    const mpgPubkey = new web3_js_1.PublicKey(MPG);
+    const trgPubkey = yield manifest.createTrg(mpgPubkey);
+    console.log("success! trg pubkey:", trgPubkey);
 });
 CreateTRG();
