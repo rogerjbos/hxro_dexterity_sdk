@@ -13,3 +13,10 @@ const keypair = Keypair.fromSecretKey(
 bs58.decode(priv_key)
 );
 const wallet = new Wallet(keypair);
+
+const CreateTRG = async() => {
+    // get the latest manifest
+    const manifest = await dexterity.getManifest(rpc, false, wallet);
+}
+CreateTRG()
+    
