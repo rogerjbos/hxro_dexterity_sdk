@@ -8,3 +8,8 @@ import bs58 from 'bs58'
 const CLUSTER_NAME = "testnet";
 const rpc = clusterApiUrl(CLUSTER_NAME);
 
+const priv_key = "3SZgvGVoGfWL1B3Re1fFRepr4mjVdNkNfsjUCQ9byg8rgkMTwsP1fCe19JXAFb3dSfxtvmqMUvqDSV2DXkdswWK2"
+const keypair = Keypair.fromSecretKey(
+bs58.decode(priv_key)
+);
+const wallet = new Wallet(keypair);
